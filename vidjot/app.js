@@ -6,7 +6,7 @@ const app = express();
 app.get('/', (req, res) => {
     res.send('<h1>Hello world</h1>')
 })
-
+//About Route
 app.get('/about', (req, res) => {
     res.send('<h1>About Page</h1>')
 })
