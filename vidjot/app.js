@@ -46,6 +46,7 @@ app.get('/ideas', (req, res) => {
     Idea.find({})
     .sort({date: 'desc'}).lean()
     .then(ideas => {
+        console.log(ideas)
         res.render('ideas/index', {
             ideas
         })
@@ -55,6 +56,20 @@ app.get('/ideas', (req, res) => {
 //Add Idea form
 app.get('/ideas/add', (req, res) => {
     res.render('ideas/add')
+})
+
+//Edit Idea form
+app.get('/ideas/edit/:id', (req, res) => {
+    Idea.findOne({ 
+        _id: req.params.id
+    })
+    .lean()
+    .then(idea => {
+        console.log(idea)
+        res.render('ideas/edit', {
+            idea
+        })
+    })
 })
 
 //Process Form
