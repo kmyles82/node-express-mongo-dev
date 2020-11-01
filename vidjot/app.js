@@ -41,6 +41,17 @@ app.get('/about', (req, res) => {
     res.render('about')
 })
 
+//Idea Index Page
+app.get('/ideas', (req, res) => {
+    Idea.find({})
+    .sort({date: 'desc'}).lean()
+    .then(ideas => {
+        res.render('ideas/index', {
+            ideas
+        })
+    })
+})
+
 //Add Idea form
 app.get('/ideas/add', (req, res) => {
     res.render('ideas/add')
